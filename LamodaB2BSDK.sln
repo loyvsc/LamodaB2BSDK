@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LamodaB2BSDK", "LamodaB2BSDK\LamodaB2BSDK.csproj", "{15D5C59A-0C9F-4B9A-A194-D64831673092}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15D5C59A-0C9F-4B9A-A194-D64831673092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D5C59A-0C9F-4B9A-A194-D64831673092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D5C59A-0C9F-4B9A-A194-D64831673092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D5C59A-0C9F-4B9A-A194-D64831673092}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
