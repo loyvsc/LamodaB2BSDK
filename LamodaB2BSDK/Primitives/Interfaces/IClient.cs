@@ -1,4 +1,7 @@
-﻿namespace LamodaB2BSDK.Primitives.Interfaces;
+﻿using LamodaB2BSDK.Helpers;
+using LamodaB2BSDK.Primitives.Requests.Options;
+
+namespace LamodaB2BSDK.Primitives.Interfaces;
 
 public interface IClient
 {
@@ -8,5 +11,8 @@ public interface IClient
     
     /// <summary>Gets the token used by the client to send requests.</summary>
     /// <value>The token used by the client to send requests.</value>
-    string Token { get; }
+    string Token { get; set; }
+    
+    protected HttpHelper HttpHelper { get; set; }
+    
 }

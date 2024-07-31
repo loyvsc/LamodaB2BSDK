@@ -1,13 +1,14 @@
 ﻿using System.Text.Json.Serialization;
+using LamodaB2BSDK.Primitives.Interfaces;
 
 namespace LamodaB2BSDK.Primitives.Models;
 
-public class Order
+public class Order : IHasId
 { 
     /// <summary>
     /// Номер заказа
     /// </summary>
-    [JsonPropertyName("orderNr")] public string OrderId { get; set; } = string.Empty;
+    [JsonPropertyName("orderNr")] public string Id { get; set; } = string.Empty;
     
     /// <summary>
     /// Номер заказа Lamoda

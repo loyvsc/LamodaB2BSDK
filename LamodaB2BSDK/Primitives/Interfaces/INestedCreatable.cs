@@ -1,7 +1,7 @@
 ﻿namespace LamodaB2BSDK.Primitives.Interfaces;
 
 public interface INestedCreatable<TEntity>
-    where TEntity : ILamodaEntity
+    where TEntity : class
 {
     TEntity Create(string url, TEntity entity);
 

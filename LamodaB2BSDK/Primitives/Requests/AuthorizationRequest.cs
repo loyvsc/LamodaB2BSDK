@@ -1,12 +1,10 @@
-﻿using LamodaB2BSDK.Primitives.Enums;
+﻿namespace LamodaB2BSDK.Primitives.Requests;
 
-namespace LamodaB2BSDK.Primitives.Models;
-
-public class AuthorizationInfo
+public class AuthorizationRequest
 {
     public string ClientId { get; set; } = string.Empty;
     public string ClientSecret { get; set; } = string.Empty;
-    public GrantType GrantType { get; set; } = GrantType.None;
+    public string GrantType { get; set; } = Enums.GrantType.ClientCredentials;
     public string? Username { get; set; }
     public string? Password { get; set; }
 }

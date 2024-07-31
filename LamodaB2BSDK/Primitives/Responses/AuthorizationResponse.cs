@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace LamodaB2BSDK.Primitives.Models;
+namespace LamodaB2BSDK.Primitives.Responses;
 
-public class AuthorizationResult
+public class AuthorizationResponse
 {
     [JsonPropertyName("access_token")] public string AccessToken { get; set; } = string.Empty;
 

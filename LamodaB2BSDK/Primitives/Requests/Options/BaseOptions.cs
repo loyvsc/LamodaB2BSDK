@@ -1,4 +1,4 @@
-﻿namespace LamodaB2BSDK.Primitives.Models;
+﻿namespace LamodaB2BSDK.Primitives.Requests.Options;
 
 public abstract class BaseOptions
 {
@@ -9,4 +9,6 @@ public abstract class BaseOptions
     protected void AddExpandRange(string[] expands) => Expand.AddRange(expands);
     
     protected bool RemoveExpand(string expand) => Expand.Remove(expand);
+
+    public abstract string ParseQuery();
 }

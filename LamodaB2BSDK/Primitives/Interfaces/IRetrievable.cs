@@ -1,7 +1,7 @@
 ﻿namespace LamodaB2BSDK.Primitives.Interfaces;
 
 public interface IRetrievable<TEntity>
-    where TEntity : ILamodaEntity, IHasId
+    where TEntity : IHasId
 {
     TEntity Get(string id);
 

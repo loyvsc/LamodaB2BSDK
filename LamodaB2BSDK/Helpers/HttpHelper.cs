@@ -1,46 +1,73 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using LamodaB2BSDK.Primitives.Interfaces;
-using LamodaB2BSDK.Primitives.Models;
+using LamodaB2BSDK.Primitives.Requests.Options;
+using LamodaB2BSDK.Primitives.Responses;
 using Newtonsoft.Json;
+using OneOf;
 
 namespace LamodaB2BSDK.Helpers;
 
-internal sealed class HttpHelper : IDisposable
+public sealed class HttpHelper : IDisposable
 {
-    private readonly HttpClient _httpClient;
+    public HttpClient HttpClient { get; }
 
-    public HttpHelper()
+    public HttpHelper(string baseAddress)
     {
-        _httpClient = new HttpClient();
-        _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        HttpClient = new HttpClient()
+        {
+            BaseAddress = new Uri(baseAddress)
+        };
+        HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
     
-    public async Task PostAsync<T>(T contentValue, RequestOptions requestOptions) where T : ILamodaEntity
+    /// <summary>
+    /// Async send post request
+    /// </summary>
+    /// <param name="requestOptions">Request options</param>
+    /// <param name="cancellationToken"></param>
+    /// <typeparam name="T">Response type</typeparam>
+    /// <returns>
+    /// <see cref="T"/> on success complete
+    /// <see cref="ErrorResponse"/> on error
+    /// </returns>
+    public async Task<OneOf<T,ErrorResponse>> PostAsync<T>(RequestOptions requestOptions, CancellationToken cancellationToken = default)
     {
-        var content = new StringContent(JsonConvert.SerializeObject(contentValue,
-            new JsonSerializerSettings()
-            { 
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            }), Encoding.UTF8, "application/json");
+        StringContent? requestContent = null;
+        if (requestOptions.Body != null)
+        {
+            requestContent = new StringContent(JsonConvert.SerializeObject(requestOptions.Body,
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                }), Encoding.UTF8, "application/json");
+        }
         
-        var result = await _httpClient.PostAsync(requestOptions.ParseQuery(), content);
-        result.EnsureSuccessStatusCode();
+        var response = await HttpClient.PostAsync(requestOptions.ParseQuery(), requestContent,cancellationToken);
+        var deserializedContent = await response.Content.ReadAsStringAsync(cancellationToken);
+        
+        return response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<T>(deserializedContent)! 
+            : JsonConvert.DeserializeObject<ErrorResponse>(deserializedContent)!;
     }
     
-    public async Task<T?> GetAsync<T>(RequestOptions requestOptions) where T : ILamodaEntity
+    /// <summary>
+    /// Async send get request
+    /// </summary>
+    /// <param name="requestOptions"></param>
+    /// <param name="cancellationToken"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public async Task<OneOf<T,ErrorResponse>> GetAsync<T>(BaseOptions requestOptions,CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync(requestOptions.ParseQuery());
-        response.EnsureSuccessStatusCode();
+        var response = await HttpClient.GetAsync(requestOptions.ParseQuery(),cancellationToken);
+        var deserializedContent = await response.Content.ReadAsStringAsync(cancellationToken);
         
-        var serializedData = await response.Content.ReadAsStringAsync();
-        
-        return JsonConvert.DeserializeObject<T>(serializedData);
+        return response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<T>(deserializedContent)! 
+            : JsonConvert.DeserializeObject<ErrorResponse>(deserializedContent)!;
     }
-
+    
     public void Dispose()
     {
-        _httpClient.Dispose();
+        HttpClient.Dispose();
     }
 }

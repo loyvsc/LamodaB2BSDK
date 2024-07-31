@@ -1,7 +1,7 @@
 ﻿namespace LamodaB2BSDK.Primitives.Interfaces;
 
 public interface INestedUpdatable<TEntity>
-    where TEntity : ILamodaEntity
+    where TEntity : class
 {
     TEntity Update(string url, TEntity entity);
 

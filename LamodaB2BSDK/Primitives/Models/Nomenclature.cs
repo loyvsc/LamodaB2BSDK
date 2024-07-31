@@ -21,7 +21,7 @@ public class Nomenclature
     /// <summary>
     /// Ставка НДС в процентах
     /// </summary>
-    [JsonPropertyName("vat")] public float Nds { get; set; }
+    [JsonPropertyName("vat")] public float Vat { get; set; }
     /// <summary>
     /// Код ТН ВЭД
     /// </summary>

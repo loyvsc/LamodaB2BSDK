@@ -1,9 +1,9 @@
-﻿using LamodaB2BSDK.Primitives.Models;
+﻿using LamodaB2BSDK.Primitives.Requests.Options;
 
 namespace LamodaB2BSDK.Primitives.Interfaces;
 
 public interface IListable<TEntity, in TOptions>
-    where TEntity : ILamodaEntity
+    where TEntity : class
     where TOptions : ListOptions
 {
     List<TEntity> List(TOptions? listOptions = null);
