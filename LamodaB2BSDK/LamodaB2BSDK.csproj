@@ -13,7 +13,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Primitives\Extensions\" />
+      <Folder Include="Extensions\" />
+      <Folder Include="Primitives\" />
     </ItemGroup>
 
 </Project>

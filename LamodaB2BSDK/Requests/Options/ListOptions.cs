@@ -1,4 +1,4 @@
-﻿namespace LamodaB2BSDK.Primitives.Requests.Options;
+﻿namespace LamodaB2BSDK.Requests.Options;
 
 public class ListOptions
 {

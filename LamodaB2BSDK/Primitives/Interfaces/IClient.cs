@@ -1,5 +1,6 @@
-﻿using LamodaB2BSDK.Helpers;
-using LamodaB2BSDK.Primitives.Requests.Options;
+﻿using LamodaB2BSDK.Requests;
+using LamodaB2BSDK.Responses;
+using OneOf;
 
 namespace LamodaB2BSDK.Primitives.Interfaces;
 
@@ -7,12 +8,13 @@ public interface IClient
 {
     /// <summary>Gets the base URL for B2B Lamoda API.</summary>
     /// <value>The base URL for B2B Lamoda API.</value>
-    string ApiBase { get; }
+    string ApiBase { get; set; }
     
     /// <summary>Gets the token used by the client to send requests.</summary>
     /// <value>The token used by the client to send requests.</value>
-    string Token { get; set; }
+    string Token { get; }
     
-    protected HttpHelper HttpHelper { get; set; }
-    
+    OneOf<AuthorizationResponse,ErrorResponse> Authorize(AuthorizationRequest authorizationRequest);
+    Task<OneOf<AuthorizationResponse,ErrorResponse>> AuthorizeAsync(AuthorizationRequest authorizationRequest, CancellationToken cancellationToken = default);
+
 }

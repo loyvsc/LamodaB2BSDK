@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 
-namespace LamodaB2BSDK.Primitives.Responses;
+namespace LamodaB2BSDK.Responses;
 
 public class ErrorResponse
 {

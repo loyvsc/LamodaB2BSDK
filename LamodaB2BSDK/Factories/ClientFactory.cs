@@ -1,7 +1,7 @@
-﻿using LamodaB2BSDK.Primitives.Clients;
+﻿using LamodaB2BSDK.Clients;
 using LamodaB2BSDK.Primitives.Interfaces;
 
-namespace LamodaB2BSDK.Primitives.Factories;
+namespace LamodaB2BSDK.Factories;
 
 public static class ClientFactory
 {

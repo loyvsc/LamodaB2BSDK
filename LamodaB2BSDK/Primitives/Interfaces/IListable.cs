@@ -1,4 +1,4 @@
-﻿using LamodaB2BSDK.Primitives.Requests.Options;
+﻿using LamodaB2BSDK.Requests.Options;
 
 namespace LamodaB2BSDK.Primitives.Interfaces;
 

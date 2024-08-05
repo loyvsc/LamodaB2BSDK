@@ -1,8 +1,8 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using LamodaB2BSDK.Primitives.Requests.Options;
-using LamodaB2BSDK.Primitives.Responses;
+using LamodaB2BSDK.Requests.Options;
+using LamodaB2BSDK.Responses;
 using Newtonsoft.Json;
 using OneOf;
 
