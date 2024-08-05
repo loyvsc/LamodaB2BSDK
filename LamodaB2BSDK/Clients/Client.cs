@@ -22,18 +22,15 @@ public class Client : IClient
     public string Token
     {
         get => _httpHelper.HttpClient.DefaultRequestHeaders.Authorization?.Parameter ?? string.Empty;
-        set
-        {
-            if (!_httpHelper.HttpClient.DefaultRequestHeaders.Contains("Authorization"))
-            {
-                _httpHelper.HttpClient.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Authorization", value);
-            }
-        }
+        set => _httpHelper.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(value);
     }
     #endregion
-    
+
+    #region Fields
+
     private readonly HttpHelper _httpHelper;
+
+    #endregion
 
     public Client(string apiBase)
     {
