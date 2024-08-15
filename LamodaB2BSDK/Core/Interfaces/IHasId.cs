@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace LamodaB2BSDK.Primitives.Interfaces;
+namespace LamodaB2BSDK.Core.Interfaces;
 
 public interface IHasId
 {

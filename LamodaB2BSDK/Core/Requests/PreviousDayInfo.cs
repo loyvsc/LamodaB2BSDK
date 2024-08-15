@@ -1,4 +1,4 @@
-﻿namespace LamodaB2BSDK.Requests;
+﻿namespace LamodaB2BSDK.Core.Requests;
 
 public class PreviousDayInfo
 {

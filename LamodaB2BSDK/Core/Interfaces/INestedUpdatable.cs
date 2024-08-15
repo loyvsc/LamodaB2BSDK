@@ -1,4 +1,4 @@
-﻿namespace LamodaB2BSDK.Primitives.Interfaces;
+﻿namespace LamodaB2BSDK.Core.Interfaces;
 
 public interface INestedUpdatable<TEntity>
     where TEntity : class

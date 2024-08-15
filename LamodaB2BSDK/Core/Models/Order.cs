@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
-using LamodaB2BSDK.Primitives.Interfaces;
+using LamodaB2BSDK.Core.Interfaces;
 
-namespace LamodaB2BSDK.Primitives.Models;
+namespace LamodaB2BSDK.Core.Models;
 
 public class Order : IHasId
 { 

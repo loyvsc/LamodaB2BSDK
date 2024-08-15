@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace LamodaB2BSDK.Primitives.Models;
+namespace LamodaB2BSDK.Core.Models;
 
 public class Nomenclature
 {
@@ -22,14 +22,16 @@ public class Nomenclature
     /// Ставка НДС в процентах
     /// </summary>
     [JsonPropertyName("vat")] public float Vat { get; set; }
+
     /// <summary>
     /// Код ТН ВЭД
     /// </summary>
-    [JsonPropertyName("tnVed")] public string TnVed { get; set; }
+    [JsonPropertyName("tnVed")]
+    public string TnVed { get; set; } = string.Empty;
     
     [JsonPropertyName("_embedded")] public NomenclatureEmbedded? NomenclatureEmbedded { get; set; }
 
-    [JsonIgnore] public NomenclaturePartner? Partner => NomenclatureEmbedded.Partner;
+    [JsonIgnore] public NomenclaturePartner? Partner => NomenclatureEmbedded?.Partner;
 
 }
 
